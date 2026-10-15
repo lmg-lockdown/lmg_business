@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="samples/logo_5.jpeg">
+    <title>LMG PRINTS & TECH HUB | Campus E-Store</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header class="site-header">
+        <img src="samples/logo_5.jpeg" alt="Brand Logo" class="brand-logo">
+    </header>
+
+    <div class="scanlines"></div>
+    
+    <header>
+        <div class="logo-container" onclick="triggerAdminAuth()">
+            <h1 class="glow-logo" style="cursor: pointer;">LMG PRINTS & TECH</h1>
+        </div>
+    
+    <!-- ADD THIS SYSTEM NAV LAYOUT TO YOUR MAIN HEADER -->
+    <nav class="terminal-nav" style="display: flex; gap: 15px; margin: 10px 0;">
+        <a href="index.html" style="color: #fff; text-decoration: none; font-family: monospace; font-size: 12px;">[// CATALOG]</a>
+        <a href="about.html" style="color: #666; text-decoration: none; font-family: monospace; font-size: 12px;" onmouseover="this.style.color='#00ff66'" onmouseout="this.style.color='#666'">[// ABOUT]</a>
+        <a href="contact.html" style="color: #666; text-decoration: none; font-family: monospace; font-size: 12px;" onmouseover="this.style.color='#00ff66'" onmouseout="this.style.color='#666'">[// SECURITY_DESK]</a>
+        <a href="terms.html" style="color: #666; text-decoration: none; font-family: monospace; font-size: 12px;" onmouseover="this.style.color='#00ff66'" onmouseout="this.style.color='#666'">[// COMPLIANCE_TERMS]</a>
+    </nav>
+
+        <div class="sys-status" id="cartIndicator">⚡ CART ACTIVE [0 MODULES]</div>
+    </header>
+
+    <!-- SECURE HIDDEN ADMIN CONSOLE (Initially Hidden via CSS) -->
+    <section class="admin-panel" id="secureAdminPortal" style="display: none;">
+        <div class="admin-header">
+            <h2 class="section-title">> RE-CONFIGURE ENGINE (ADMIN MERCH PORTAL)</h2>
+            <button class="remove-node-btn" onclick="closeAdminPortal()">[CLOSE PANEL]</button>
+        </div>
+        <form id="adminProductForm" class="admin-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="newProdName">Product Title:</label>
+                    <input type="text" id="newProdName" placeholder="e.g., LMG Retro Hoodie" required>
+                </div>
+                <div class="form-group">
+                    <label for="newProdCat">Category Vector:</label>
+                    <select id="newProdCat">
+                        <option value="Products">NEW PRODUCT</option>
+                        <option value="Apparel">Streetwear (Apparel)</option>
+                        <option value="Shoes">Kicks (Shoes)</option>
+                        <option value="Laptops">Laptops</option>
+                        <option value="Phones">Phones</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="newProdPrice">Unit Price (GHS):</label>
+                    <input type="number" id="newProdPrice" placeholder="e.g., 150" min="0" step="0.01" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group flex-2">
+                    <label for="newProdDesc">System Specifications / Design Description:</label>
+                    <input type="text" id="newProdDesc" placeholder="Heavyweight drop-shoulder street cotton..." required>
+                </div>
+                <div class="form-group">
+                    <label for="newProdSizes">Size Matrix / Spec Array (Comma Separated):</label>
+                    <input type="text" id="newProdSizes" placeholder="M, L, XL or 8GB, 16GB" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="newProdImg">Product Image URL / Filename:</label>
+                    <input type="text" id="newProdImg" placeholder="samples/hoodie.jpg or leave blank for placeholder image">
+                </div>
+                <div class="form-btn-group">
+                    <button type="submit" class="cyber-btn admin-submit">DEPLOY NEW INVENTORY MODULE</button>
+                </div>
+               
+            </div>
+        </form>
+    </section>
+
+    <main class="grid-container">
+        
+        <!-- MAIN CLIENT INTERFACE PANEL -->
+        <div class="main-left">
+            <div class="filter-bar">
+                <button class="filter-btn" onclick="filterCategory('all', this)">NEW PRODUCTS</button>
+                <button class="filter-btn" onclick="filterCategory('Apparel', this)">STREETWEAR</button>
+                <button class="filter-btn" onclick="filterCategory('Shoes', this)">KICKS</button>
+                <button class="filter-btn" onclick="filterCategory('Laptops', this)">Laptops</button>
+                <button class="filter-btn" onclick="filterCategory('Phones', this)">Phones</button>
+            </div>
+
+            <!-- Dynamic Product Matrix Output -->
+            <div class="product-grid" id="productGridContainer"></div>
+        </div>
+
+        <!-- CLIENT INQUIRY & CHECKOUT MANIFESTO -->
+        <section class="config-section">
+            <h2 class="section-title">CURRENT INQUIRY MANIFESTO</h2>
+            <div class="config-box">
+                
+                <div id="cartManifestoBox" class="cart-manifesto">
+                    <div class="empty-notice">> NO CORE MODULES ENGAGED IN CART.</div>
+                </div>
+
+                <!-- Live Price Subtotal Terminal Display Matrix -->
+                <div class="financial-matrix">
+                    <div class="matrix-row">
+                        <span>ESTIMATED SUBTOTAL:</span>
+                        <span id="cartSubtotalValue">GHS 0.00</span>
+                    </div>
+                    <div class="matrix-row security-note">
+                        <span>> TRANSACTION STATUS:</span>
+                        <span style="color: var(--cyber-green);">AWAITING COMPLIANCE DISPATCH</span>
+                    </div>
+                </div>
+
+                 <div class="clear-div">
+                    <button class="clear-cart-btn" onclick="completelyClearCartMemory()">CLEAR CART</button>
+                </div>
+
+                <!-- Global Order Meta Parameter Options -->
+                <div class="global-controls">
+                    <div class="input-group">
+                        <label for="campusHub">📍 DELIVERY LOCATION:</label>
+                        <select id="campusHub">
+                            <option value="Accra">Accra</option>
+                            <option value="Kasoa">Kasoa</option>
+                            <option value="Tema">Tema</option>
+                            <option value="Kumasi">Kumasi</option>
+                            <option value="Cape Coast">Cape Coast</option>
+                            <option value="Takoradi">Takoradi</option>
+                            <option value="Tamale">Tamale</option>
+                            <option value="Sunyani">Sunyani</option>
+                            <option value="Ho">Ho</option>
+                            <option value="Koforidua">Koforidua</option>
+                            <option value="Wa">Wa</option>
+                            <option value="Bolgatanga">Bolgatanga</option>
+                            <option value="Other location in Ghana">Other location in Ghana</option>
+                        </select>
+        
+                    </div>
+
+                    <div class="input-group">
+                        <label for="deliveryAddress">🏠 ENTER YOUR FULL DELIVERY ADDRESS:</label>
+                        <input
+                            type="text"
+                            id="deliveryAddress"
+                            placeholder="Region, town, street, landmark or hostel"
+                            required
+                            style="width:100%; padding:10px; background:#0a0a0a; border:1px solid #1a1a1a; color:#fff;"
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label class="file-upload-label" for="globalGraphic">> UPLOAD CUSTOM SWEATSHIRT/TEE PRINT LOGO:</label>
+                        <input type="file" id="globalGraphic" accept="image/*" onchange="registerGlobalFile()">
+                        <small id="globalFileStatus" style="color: #00ff66; display:block; margin-top:5px; font-size:11px;"></small>
+                    </div>
+
+                    <!-- Main WhatsApp Button -->
+                        <button class="cyber-btn checkout-btn" onclick="fireWhatsAppQuote()">ORDER VIA WHATSAPP</button>
+
+                    <!-- ADD THIS TEXT LINK DIRECTLY UNDER THE BUTTON -->
+                    <div style="margin-top: 12px; text-align: center;">
+                        <a href="#" onclick="firePlainTextFallback(event)" style="color: #666; font-size: 11px; text-decoration: none; font-family: 'Courier New', Courier, monospace; letter-spacing: 0.5px; transition: color 0.2s;" onmouseover="this.style.color='#ff3b30'" onmouseout="this.style.color='#666'">
+                        [//NO WHATSAPP? GENERATE PLAIN-TEXT TELEMETRY]
+                        </a>
+                    </div>
+
+                    
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+    <div class="footer-matrix">
+        <!-- Brand/Copyright Column Node -->
+        <div class="footer-node">
+            <span style="color: var(--cyber-green);">> SYSTEM PATHWAYS:</span>
+            <p style="font-size: 10px; color: yellow; margin-top: 5px;">AUTHOUR: LMG_LOCKDOWN</p>
+            <p>&copy; 2026 LMG PRINTS & TECH HUB. ALL RIGHTS RESERVED.</p>
+            <p style="font-size: 10px; color: #444; margin-top: 5px;">DESIGNED BY AN LMG GCTU FRESHER ENGINE</p>
+        </div>
+
+        <!-- NEW: PARTNER INFRASTRUCTURE NODES COLUMN -->
+        <div class="footer-node">
+            <span style="color: var(--cyber-green);">> VERIFIED PARTNER NODES:</span>
+            <div class="partner-links-grid" style="margin-top: 5px; display: flex; flex-direction: column; gap: 4px;">
+                <p class="partner-link">[// JUMIA_GHANA_CORE]</p>
+                <p class="partner-link">[// ALIEXPRESS_GLOBAL]</p>
+                <p class="partner-link">[// AMAZON_LOGISTICS]</p>
+            </div>
+        </div>
+
+        <!-- Status Column Node -->
+        <div class="footer-node status-glow">
+            <span>● SECURE STATUS: TERMINAL STEADY</span>
+        </div>
+    </footer>
+    <!-- SYSTEM ZOOM OVERLAY MODAL -->
+    <div id="imageEnlargeModal" class="zoom-modal" onclick="closeImageEnlargeNode()">
+        <span class="zoom-close-btn">[CLOSE_VIEW]</span>
+        <img id="zoomedImageTarget" src="" alt="Enlarged View">
+    </div>
+    <!-- TERMINAL SUCCESS NOTIFICATION DECK -->
+    <div id="cyberToastBox" class="toast-node">
+        <span id="cyberToastMessage">> INVENTORY MODULE ENGAGED SYSTEM_OK</span>
+    </div>
+
+    <script src="script.js?v=5.0.0"></script>
+</body>
+</html>
