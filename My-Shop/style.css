@@ -472,6 +472,26 @@ color: #777777;
     .toast-node.show-alert {
         animation: toastSlideInMobile 0.3s ease-out;
     }
+
+    /* Mobile responsiveness rules */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  /* Forces all large images to shrink dynamically to fit mobile screens */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Keeps containers from expanding past the phone screen width */
+  div, section, main, header {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
 }
 @keyframes toastSlideInMobile {
     from { bottom: 0; opacity: 0; }
