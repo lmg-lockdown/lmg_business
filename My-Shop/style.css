@@ -496,4 +496,20 @@ color: #777777;
 @keyframes toastSlideInMobile {
     from { bottom: 0; opacity: 0; }
     to { bottom: 20px; opacity: 1; }
+
+      /* Fixes the cramped top navigation menu items */
+  nav, .nav-container, header div { 
+    display: flex !important;
+    flex-wrap: wrap !important; /* Forces menu items to wrap to a new line if they run out of space */
+    justify-content: center !important;
+    gap: 10px !important;       /* Adds neat space between each menu item */
+    padding: 10px 0 !important;
+  }
+
+  /* Shrinks the menu text slightly so more items fit on one line */
+  nav a, .nav-container a, header a {
+    font-size: 11px !important; 
+    white-space: nowrap;        /* Stops single words like SECURITY_DESK from splitting up awkwardly */
+  }
+
 }
