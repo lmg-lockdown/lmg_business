@@ -512,4 +512,35 @@ color: #777777;
     white-space: nowrap;        /* Stops single words like SECURITY_DESK from splitting up awkwardly */
   }
 
+  /* 1. Target the main gold-bordered header bar */
+  header, 
+  .header-container,
+  div[style*="display: flex"] {
+    flex-direction: column !important; /* Changes from horizontal row to vertical column */
+    align-items: center !important;
+    text-align: center !important;
+    height: auto !important;           /* Allows container height to expand for stacked elements */
+    padding: 15px 10px !important;
+    gap: 15px !important;              /* Spacing between brand title, nav links, and cart status */
+  }
+
+  /* 2. Target the group containing CATALOG, ABOUT, SECURITY_DESK, COMPLIANCE_TERMS */
+  header div, 
+  nav {
+    display: flex !important;
+    flex-wrap: wrap !important;        /* Let links wrap to a second line dynamically */
+    justify-content: center !important;
+    gap: 12px !important;              /* Clean gap between individual clickable elements */
+  }
+
+  /* 3. Give the category buttons (New Products, Streetwear, Kicks...) room to breathe */
+  .category-container, 
+  div[style*="grid"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+
 }
