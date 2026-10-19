@@ -37,7 +37,7 @@
     { 
         "id": 4, 
         "name": "Blackview AceBook 6 Laptop", 
-        "desc": "",
+        "desc": "Meet the Blackview AceBook 6 – where powerful performance meets larger screen real estate. This lightweight, slim laptop delivers smarter performance with an expansive 15.6-inch FHD+ IPS display for immersive visuals and productivity.Powered by the AMD Ryzen™ 5 3500U processor (3.7GHz), the AceBook 6 handles multitasking, work, study, and entertainment with ease. The 16GB DDR4 RAM ensures smooth performance for all your applications, while the 512GB M.2 SSD provides fast storage with up to 1TB expansion capability./n",
         "price": 6741.00,
         "img": ["samples/blackview.jpg"],
         "sizes": ["16GB RAM / 512GB SSD - AMD Ryzen 5 3500U"], 
