@@ -36,8 +36,8 @@
     },
     { 
         "id": 4, 
-        "name": "Blackview AceBook 6 Laptop (GCTU Spec Machine)", 
-        "desc": "Blackview AceBook 6 Laptop",
+        "name": "Blackview AceBook 6 Laptop", 
+        "desc": "",
         "price": 6741.00,
         "img": ["samples/blackview.jpg"],
         "sizes": ["16GB RAM / 512GB SSD - AMD Ryzen 5 3500U"], 
